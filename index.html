@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tintelių Ekologiškas Ūkis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #a8d08d;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%234a7c2c" width="1200" height="600"/><circle fill="%23a8d08d" opacity="0.1" cx="200" cy="150" r="100"/><circle fill="%23a8d08d" opacity="0.1" cx="900" cy="400" r="150"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #8fbc5a;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #2d5016;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #4a7c2c 0%, #6b9d3e 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            padding: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #8fbc5a 0%, #6b9d3e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-content h3 {
+            color: #2d5016;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: #f8f9f5;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4a7c2c 0%, #6b9d3e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .feature-item h3 {
+            color: #2d5016;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d5016;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🌿 Tintelių Ūkis</div>
+            <ul>
+                <li><a href="#pagrindinis">Pagrindinis</a></li>
+                <li><a href="#apie">Apie mus</a></li>
+                <li><a href="#produktai">Produktai</a></li>
+                <li><a href="#kontaktai">Kontaktai</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Sveiki atvykę į Tintelių Ekologišką Ūkį</h1>
+        <p>Tvarus ūkininkavimas ir šviežios gėrybės tiesiai iš laukų ant Jūsų stalo</p>
+        <a href="#produktai" class="cta-button">Atraskite produktus</a>
+    </section>
+
+    <div class="container">
+        <section id="apie" class="section">
+            <h2>Apie mūsų ūkį</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    <span>🚜 Ūkio vaizdas</span>
+                </div>
+                <div class="about-text">
+                    <p>Tintelių Ekologinis Ūkis naudoja ekologiškus metodus daržovėms, vaisiams ir žolelėms auginti. Tikime aplinkos apsauga ir vietos bendruomenės palaikymu.</p>
+                    <p>Mūsų ūkis įkurtas siekiant sukurti tvarią ir aplinkai draugišką žemės ūkio erdvę. Naudojame atsinaujinančią energiją, kompostavimą ir natūralius kenkėjų kontrolės metodus.</p>
+                    <p>Mūsų komanda aistringai rūpinasi ekologišku ūkininkavimu, biologine įvairove ir vietos bendruomenės palaikymu.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="produktai" class="section">
+            <h2>Mūsų produktai</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🥕</div>
+                    <div class="product-content">
+                        <h3>Ekologiškos daržovės</h3>
+                        <p>Šviežios, sezonines daržovės auginamos be cheminių trąšų ir pesticidų.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🍎</div>
+                    <div class="product-content">
+                        <h3>Švieži vaisiai</h3>
+                        <p>Natūraliai subrendę vaisiai pilni vitaminų ir skonių.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🌿</div>
+                    <div class="product-content">
+                        <h3>Žolelės ir prieskoniai</h3>
+                        <p>Aromatinės žolelės ir prieskoniai Jūsų virtuvei.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">👥</div>
+                    <div class="product-content">
+                        <h3>Ekskursijos ir dirbtuvės</h3>
+                        <p>Aplankykite ūkį ir sužinokite apie ekologišką ūkininkavimą.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <h3>Sertifikuota praktika</h3>
+                <p>Ekologiško ūkininkavimo standartai</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎓</div>
+                <h3>Bendruomenės švietimas</h3>
+                <p>Edukacinės programos ir dirbtuvės</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🦋</div>
+                <h3>Gamtos apsauga</h3>
+                <p>Laukinės gamtos buveinių išsaugojimas</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">♻️</div>
+                <h3>Nulinės atliekos</h3>
+                <p>Tvarumo ir atsakingumo iniciatyvos</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="kontaktai">
+        <p>© 2025 Tintelių Ekologiškas Ūkis. Visos teisės saugomos.</p>
+        <p>📍 Lietuva | 📧 info@tinteliuukis.lt | 📞 +370 XXX XXXXX</p>
+    </footer>
+</body>
+</html>
